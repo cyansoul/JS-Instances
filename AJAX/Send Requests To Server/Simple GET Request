@@ -1,0 +1,53 @@
+<html>
+<head>
+<script type="text/javascript">
+function loadXMLDoc()
+{
+var xmlhttp;
+/**
+为了应对所有浏览器，包括 IE5 和 IE6
+检查浏览器是否支持 XMLHttpRequest 对象
+如果支持，则创建 XMLHttpRequest 对象
+如果不支持，则创建 ActiveXObject
+*/
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  //xmlhttp.readyState==4 -- 响应已完成；您可以获取并使用服务器的响应了
+  //xmlhttp.status==200 -- 交易成功
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText; //可返回请求方法以及请求时间
+    }
+  }
+  
+/**
+open(method,url,async)
+规定请求的类型、URL 以及是否异步处理请求
+method：请求的类型；GET 或 POST
+url：文件在服务器上的位置
+async：true（异步）或 false（同步）
+send(String)
+将请求发送到服务器。
+string：仅用于 POST 请求
+*/
+xmlhttp.open("GET","/ajax/demo_get.asp",true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<h2>AJAX</h2>
+<button type="button" onclick="loadXMLDoc()">请求数据</button>
+<div id="myDiv"></div>
+
+</body>
+</html>
