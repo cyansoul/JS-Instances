@@ -1,0 +1,76 @@
+// 1.$.ajax 带 json 数据的异步请求
+ 2 var aj = $.ajax( {  
+ 3     url:'productManager_reverseUpdate',    // 跳转到 action  
+ 4     data:{  
+ 5              selRollBack : selRollBack,  
+ 6              selOperatorsCode : selOperatorsCode,  
+ 7              PROVINCECODE : PROVINCECODE,  
+ 8              pass2 : pass2  
+ 9     },  
+10     type:'post',  
+11     cache:false,  
+12     dataType:'json',  
+13     success:function(data) {  
+14         if(data.msg =="true" ){  
+15             // view("修改成功！");  
+16             alert("修改成功！");  
+17             window.location.reload();  
+18         }else{  
+19             view(data.msg);  
+20         }  
+21      },  
+22      error : function() {  
+23           // view("异常！");  
+24           alert("异常！");  
+25      }  
+26 });
+27 
+28 
+29 // 2.$.ajax 序列化表格内容为字符串的异步请求
+30 function noTips(){  
+31     var formParam = $("#form1").serialize();   //序列化表格内容为字符串  
+32     $.ajax({  
+33         type:'post',      
+34         url:'Notice_noTipsNotice',  
+35         data:formParam,  
+36         cache:false,  
+37         dataType:'json',  
+38         success:function(data){  
+39         }  
+40     });  
+41 }  
+42 
+43 
+44 // 3.$.ajax 拼接 url 的异步请求
+45 var yz=$.ajax({  
+46      type:'post',  
+47      url:'validatePwd2_checkPwd2?password2='+password2,  
+48      data:{},  
+49      cache:false,  
+50      dataType:'json',  
+51      success:function(data){  
+52           if( data.msg =="false" ) // 服务器返回false，就将validatePassword2的值改为pwd2Error，这是异步，需要考虑返回时间  
+53           {  
+54                textPassword2.html("<font color='red'>业务密码不正确！</font>");  
+55                $("#validatePassword2").val("pwd2Error");  
+56                checkPassword2 = false;  
+57                return;  
+58            }  
+59       },  
+60       error:function(){}  
+61 }); 
+62 
+63 
+64 // 4.$.ajax 拼接 data 的异步请求
+65 $.ajax({   
+66     url:'<%=request.getContextPath()%>/kc/kc_checkMerNameUnique.action',   
+67     type:'post',   
+68     data:'merName='+values,   
+69     async : false,     // 默认为true 异步   
+70     error:function(){   
+71        alert('error');   
+72     },   
+73     success:function(data){   
+74        $("#"+divs).html(data);   
+75     }
+76 });
