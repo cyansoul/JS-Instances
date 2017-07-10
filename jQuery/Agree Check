@@ -1,0 +1,21 @@
+/**
+注册时“同意并接收注册协议”复选框的实现
+首选添加复选框
+*/
+<input type="checkbox" id="cr"/><label for="cr">我已经阅读了以上制度.</label>
+
+/**
+JavaScript 部分
+通过 $("#cr") 获取到复选框元素
+然后通过判断复选框是否被选中
+来执行下一步操作
+*/
+$document.ready(function(){       //等待 dom 元素加载完毕
+  var $cr = $("#cr");             //jQuery 对象
+  var cr = $cr[0];                //DOM 对象，或者$cr.get(0)
+  $cr.click(function(){
+    if(cr.checked){               //DOM 方式判断
+      alert("继续操作！");
+    }
+  })
+})
