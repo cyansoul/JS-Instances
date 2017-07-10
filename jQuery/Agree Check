@@ -19,3 +19,19 @@ $document.ready(function(){       //等待 dom 元素加载完毕
     }
   })
 })
+
+/**
+换一种方式
+使用 jQuery 中的方法来判断
+选项是否被选中
+*/
+$document.ready(function(){         //等待 dom 元素加载完毕
+  var $cr = $("#cr");               //jQuery 对象
+  $cr.click(function(){
+    if($cr.is(":checked")){         //jQuery 方式判断
+      alert("继续操作！");
+    }
+  })
+})
+
+注：is(":checked") 是 jQuery 中的方法，判断 jQuery 对象是否被选中，返回 boolean 值。
