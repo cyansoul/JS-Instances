@@ -1,0 +1,50 @@
+/**
+按钮被点击时改变 <body> 元素的背景色
+*/
+<html>
+<body>
+
+<input type="button" onclick="document.body.style.backgroundColor='lavender';"
+value="Change background color" />
+
+</body>
+</html>
+
+/**
+由函数执行相同的动作
+*/
+<html>
+<body>
+
+<script>
+function ChangeBackground()
+{
+document.body.style.backgroundColor="lavender";
+}
+</script>
+
+<input type="button" onclick="ChangeBackground()"
+value="Change background color" />
+
+</body>
+</html>
+
+/**
+在按钮被点击时改变 <p> 元素的文本
+*/
+<html>
+<body>
+
+<p id="p1">Hello world!</p>
+
+<script>
+function ChangeText()
+{
+document.getElementById("p1").innerHTML="New text!";
+}
+</script>
+
+<input type="button" onclick="ChangeText()" value="Change text">
+
+</body>
+</html>
